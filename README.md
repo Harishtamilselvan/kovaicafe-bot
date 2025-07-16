@@ -131,26 +131,26 @@ Delivery Flow Diagram:-
 How to Run
 # Step 1: Launch the covaicafe_bot simulation in gazebo fortress (warning dont use gazebo classic for this pkg)
 
- ros2 launch kovaicafe_bot launch_sim.launch.py 
+    ros2 launch kovaicafe_bot launch_sim.launch.py 
 
 <img width="1851" height="1023" alt="Screenshot from 2025-07-16 17-54-34" src="https://github.com/user-attachments/assets/af623ef2-d7e5-4252-8751-113650e7877d" />
 
 
 # Step 2: Run the localization launch file:-
 
- ros2 launch kovaicafe_bot localization_launch.py 
+    ros2 launch kovaicafe_bot localization_launch.py 
  
 # Step 3: Run the navigation launch file:-
 
-  ros2 launch kovaicafe_bot navigation_launch.py 
+    ros2 launch kovaicafe_bot navigation_launch.py 
 
 # Step 3: launch rviz2:-
-  rviz2
+    rviz2
 # Step 4: add map and robot model in rviz2 then set the 2d Pose Estimate of the robot 
 # Step 5: run the ordermng node:-
-  ros2 run  ordermng butler_nav 
+    ros2 run  ordermng butler_nav
 
-
+# Step 5: all set to go now the butler bot delivers order based on the gui instruction 
  
 
 
