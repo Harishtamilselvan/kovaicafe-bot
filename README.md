@@ -17,7 +17,7 @@ Features:-
 
 Functional Description:-
 
-The system leverages ROS 2 Humble and Nav2 Simple Commander API to perform the following key functions:
+    The system leverages ROS 2 Humble and Nav2 Simple Commander API to perform the following key functions:
     1. Navigate to Kitchen — Initiated via GUI.
     2. Wait for Food Placement — Supports manual wait or a timeout mechanism.
     3. Table Selection — Allows users to assign one or more delivery destinations.
@@ -32,7 +32,7 @@ Code Walkthrough (Main Logic):-
 
 This is the core script that defines and controls robot behavior during the delivery cycle. It includes:
 
-1. Initialization (``)
+   1. Initialization (``)
    
     • The constructor is the first method called when the node is created.
     • It calls super().__init__('butler_navigation_task') to initialize the ROS node.
@@ -41,17 +41,17 @@ This is the core script that defines and controls robot behavior during the deli
     • Defines all internal control flags like selected_tables, food_ready, confirmation_flags, cancel_flags, and status_message, which hold the robot’s dynamic state.
     • These flags are directly influenced by GUI button presses.
    
-3. Pose Creation (``)
+  3. Pose Creation (``)
    
     • The method takes in x, y coordinates and yaw (orientation in radians).
     • Converts yaw to a quaternion using quaternion_from_euler() for orientation representation in ROS.
     • Constructs and returns a PoseStamped message, which includes frame ID, timestamp, position, and orientation.
     • These poses are then used in navigator.goToPose() calls for actual motion.
    
-4. Navigation Method (``)
+   4. Navigation Method (``)
    
-This function encapsulates the process of safe goal execution with cancellation handling, condition-based waiting, and result interpretation.
-Steps:
+    This function encapsulates the process of safe goal execution with cancellation handling, condition-based waiting, and  result interpretation.
+    Steps:
     1. Send goal to Nav2 using goToPose(pose).
     2. Continuously monitor the task using isTaskComplete().
     3. Inside the loop, extract real-time feedback with getFeedback().
@@ -64,11 +64,11 @@ Steps:
             ▪ Waits for confirmation flag for up to 20 seconds.
             ▪ If confirmed: success; if not: logs as timeout/failure.
     6. Returns status as a string: 'arrived', 'cancelled', or 'timeout'.
-This modular method ensures that every movement has clear outcome handling.
+    This modular method ensures that every movement has clear outcome handling.
 
 6. Main Delivery Loop (``)
    
-This is the delivery execution thread which is started once “Start Delivery” is pressed.
+       This is the delivery execution thread which is started once “Start Delivery” is pressed.
 Workflow:
     1. Pre-checks
         ◦ Verifies food_ready and selected_tables are set.
@@ -96,7 +96,7 @@ Multithreaded: This function runs in a background thread so that GUI stays respo
  
 GUI Description:-
 
-Built with Python’s built-in tkinter, the graphical interface provides:
+    Built with Python’s built-in tkinter, the graphical interface provides:
     • Call Robot to Kitchen — Triggers kitchen visit
     • Wait in Kitchen — Lets the robot know food is being placed
     • Place Food — Flags the system that food is ready
