@@ -108,25 +108,25 @@ Built with Python’s built-in tkinter, the graphical interface provides:
     • Live Status Label — Constantly updated with current robot state
 Each button directly sets or clears internal flags in the ButlerNav object that influence behavior in real-time.
 
-Delivery Flow Diagram:-
+Delivery Flow Diagram:- 
 
-[Call Robot to Kitchen]
+     [Call Robot to Kitchen]
         ↓
-[Robot Navigates to Kitchen]
+    [Robot Navigates to Kitchen]
         ↓
-[Wait in Kitchen (manual or 20s timeout)]
+     Wait in Kitchen (manual or 20s timeout)]
         ↓
-[Food Placed + Table Selection + Start Delivery]
+    [Food Placed + Table Selection + Start Delivery]
         ↓
-[Robot Visits Each Table in Sequence]
+    [Robot Visits Each Table in Sequence]
         ↓
     ├── [Order Confirmed] → continue
     ├── [Cancelled]       → skip
     └── [No Confirmation] → mark as failed
         ↓
-[If Any Failed or Cancelled → Return to Kitchen → Wait for Food Retaken]
+    [If Any Failed or Cancelled → Return to Kitchen → Wait for Food Retaken]
         ↓
-[Return to Home Base]
+    [Return to Home Base]
 
 How to Run
 # Step 1: Launch the covaicafe_bot simulation in gazebo fortress (warning dont use gazebo classic for this pkg)
