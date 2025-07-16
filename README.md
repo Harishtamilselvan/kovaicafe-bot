@@ -67,27 +67,33 @@ This is the core script that defines and controls robot behavior during the deli
     This modular method ensures that every movement has clear outcome handling.
 
 6. Main Delivery Loop (``)
+
+
+
+
+
    
        This is the delivery execution thread which is started once “Start Delivery” is pressed.
-Workflow:
-    1. Pre-checks
+       Workflow:
+   
+       1. Pre-checks
         ◦ Verifies food_ready and selected_tables are set.
-    2. Step 1: Go to Kitchen
+       2. Step 1: Go to Kitchen
         ◦ Calls safe_go_to(self.kitchen_pose, 'kitchen')
         ◦ If cancelled, aborts delivery, goes home.
-    3. Step 2: Iterate over tables
+       3. Step 2: Iterate over tables
         ◦ For every table in selected_tables:
             ▪ Skips if canceled.
             ▪ Calls safe_go_to() and waits for confirmation.
             ▪ Logs successful, failed, and cancelled tables.
-    4. Step 3: Handle Errors
+       4. Step 3: Handle Errors
         ◦ If any orders failed or were canceled:
             ▪ Return to kitchen.
             ▪ Wait for food_retaken flag from GUI.
-    5. Step 4: Return Home
+       5. Step 4: Return Home
         ◦ Navigates to home position.
         ◦ Updates status to “Returning Home…”
-    6. Step 5: Reset Flags
+       6. Step 5: Reset Flags
         ◦ Clears all selected tables, flags, confirmations, and cancellations.
         ◦ Sets status_message = "Idle".
         
